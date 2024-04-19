@@ -41,9 +41,11 @@ class Transaction
             throw $exception;
         } catch (Throwable $throwable) {
             DB::rollBack();
+
             if ($throwable->getCode() >= 400 && $throwable->getCode() < 500 && $throwable->getMessage() != '') {
                 abort($throwable->getCode(), $throwable->getMessage());
             }
+
             throw $throwable;
         }
     }
