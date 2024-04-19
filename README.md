@@ -1,65 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Projeto: CRUD API de Produtos em Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sobre o projeto
+=======================
 
-## About Laravel
+Este projeto consiste em uma API para gerenciamento de produtos desenvolvida utilizando o framework Laravel e MySQL.
+A API permite a realização das operações básicas de CRUD (Create, Read, Update, Delete) para manipular os dados dos produtos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Funcionalidades Principais:
+==========================
+* **CRUD de Produtos:** A API permite a criação, leitura, atualização e exclusão de produtos.
+* **Filtragem Avançada:** Utilizando a biblioteca `tucker-eric/eloquentfilter`, é possível aplicar filtros avançados nos resultados das consultas, facilitando a busca por produtos com base em diversos critérios.
+* **Organização Modular:** O projeto faz uso da biblioteca `nwidart/laravel-modules` para organizar o código em módulos, facilitando a manutenção e escalabilidade do sistema.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Requisitos
+============
+* PHP >= 8.2
+* Composer
+* Docker
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Installation
+============
+Passo a passo para instalar e executar esse projeto.
 
-## Learning Laravel
+**1.** Clone o projeto `git clone https://github.com/WellingtonMaia/crud-test-bevi.git`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**2.** Executar esses dois comandos
+`cd crud-test-bevi` e `cp .env.example .env`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**3.** Configurar o banco de dados no arquivo `.env` com essas informações:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=bevi_database
+    DB_USERNAME=sail
+    DB_PASSWORD=password
 
-## Laravel Sponsors
+**4.** Executar esse comando para intalar as dependências do projeto. Este comando usa um pequeno contêiner Docker contendo PHP e Composer para instalar as dependências.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
 
-### Premium Partners
+**5.** Executar esse comando para iniciar todos os container Docker em segundo plano.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    sail up -d
 
-## Contributing
+**6.** Executar esse comando para gerar uma chave na variável de ambiente `APP_KEY` no arquivo `.env`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+        sail artisan key:generate
 
-## Code of Conduct
+**7.** Executar esse comando para criar as tabelas no banco de dados.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    sail artisan migrate
 
-## Security Vulnerabilities
+**8.** Por último, executar os testes com esse comando:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    sail artisan test --filter=product
+
+**Obs.:** Nesse projeto tem um arquivo `TEST_API_BEVI.postman_collection.json` para importar no **Postman** e realizar testes manualmente.
 
 ## License
 

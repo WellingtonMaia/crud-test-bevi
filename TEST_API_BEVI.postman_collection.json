@@ -1,0 +1,850 @@
+{
+	"info": {
+		"_postman_id": "a567cc2f-9de6-4d13-b2b2-f45b50c25b1a",
+		"name": "TEST API BEVI",
+		"description": "Bem-vindo à minha API de gerenciamento de produtos, desenvolvida como parte de um projeto de entrevista da empresa BEVI. Esta API oferece operações básicas de CRUD (Create, Read, Update, Delete) para gerenciar produtos em um sistema.\n\nNesta API, você poderá realizar as seguintes operações:\n\n- **Create**: Adicionar um novo produto ao sistema com informações como nome, descrição, preço e quantidade em estoque.\n- **Read**: Recuperar informações detalhadas sobre um produto específico ou listar todos os produtos disponíveis.\n- **Update**: Atualizar as informações de um produto existente, como seu nome, descrição, preço ou quantidade em estoque.\n- **Delete**: Remover um produto do sistema, caso não seja mais necessário.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6074214"
+	},
+	"item": [
+		{
+			"name": "Product Collection",
+			"item": [
+				{
+					"name": "Create a product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Produto P\",\n    \"description\": \"Descrição do Produto P...\",\n    \"price\": 10.94,\n    \"status\": \"iii\",\n    \"stock_quantity\": 100\n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Informações sobre os atributos\n\n- `name` - Tipo **string**, com o limite de 255 caracteres.\n- `description` - Tipo **string**, com o limite de 500 caracteres.\n- `price` - Tipo **float**, permitido só números positivos.\n- `status` - Tipo **enum** (**i**. em estoque; **ii**. em reposição; **iii**. em falta).\n- `stock_quantity` - Tipo **int**."
+					},
+					"response": [
+						{
+							"name": "Create a product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Produto A\",\n    \"description\": \"Descrição do Produto A...\",\n    \"price\": 10.94,\n    \"status\": \"iii\",\n    \"stock_quantity\": 100\n}"
+								},
+								"url": {
+									"raw": "http://localhost/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost/api/products/4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Apr 2024 23:57:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"product created with success!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost/api/products/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{productId}}"
+							]
+						},
+						"description": "Obter informações de um produto através de um ID existente."
+					},
+					"response": [
+						{
+							"name": "Get a product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Apr 2024 23:59:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Produto A\",\n    \"description\": \"Descrição do Produto A\",\n    \"price\": \"19.99\"\n}"
+						},
+						{
+							"name": "Product not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:34:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product not found.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Produto AZ\",\n    \"description\": \"Descrição do Produto AZ\",\n    \"price\": 19.99,\n    \"status\": \"ii\",\n    \"stock_quantity\": 20\n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/products/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{productId}}"
+							]
+						},
+						"description": "Informações sobre os atributos\n\n- `name` - Tipo **string**, com o limite de 255 caracteres.\n    \n- `description` - Tipo **string**, com o limite de 500 caracteres.\n    \n- `price` - Tipo **float**, permitido só números positivos.\n    \n- `status` - Tipo **enum** (**i**. em estoque; **ii**. em reposição; **iii**. em falta).\n    \n- `stock_quantity` - Tipo **int**.\n    \n\n### Important\n\nInformar o ID do produto no final da rota para realizar a alteração"
+					},
+					"response": [
+						{
+							"name": "Update a product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Produto AZ\",\n    \"description\": \"Descrição do Produto AZ\",\n    \"price\": 19.99,\n    \"status\": \"ii\",\n    \"stock_quantity\": 20\n}"
+								},
+								"url": {
+									"raw": "http://localhost/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:00:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product saved with success\"\n}"
+						},
+						{
+							"name": "Product not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Produto AZ\",\n    \"description\": \"Descrição do Produto AZ\",\n    \"price\": 19.99,\n    \"status\": \"ii\",\n    \"stock_quantity\": 20\n}"
+								},
+								"url": {
+									"raw": "http://localhost/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:39:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product not found.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/products?perPage=5&Page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "5"
+								},
+								{
+									"key": "Page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Além de obter os produtos, é permitido realizar filtros e navegar por páginas.\n\nSegue a baixo alguns parametros:\n\n- `perPage` - Quantidade de produtos por página\n- `page` - Número da página.\n    \n\nParametros para filtros:\n\n- `name` - **string**\n    \n- `description`\\- **string**\n    \n- `status`\\- (**i**, **ii**, **iii**)"
+					},
+					"response": [
+						{
+							"name": "Get all products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/products?perPage=5&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "5"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "name",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:01:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Produto AZ\",\n            \"description\": \"Descrição do Produto AZ\",\n            \"price\": \"19.99\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Produto B\",\n            \"description\": \"Descrição do Produto B\",\n            \"price\": \"200.99\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Produto C\",\n            \"description\": \"Descrição do Produto C\",\n            \"price\": \"10.94\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Produto D\",\n            \"description\": \"Descrição do Produto D\",\n            \"price\": \"10.94\"\n        }\n    ],\n    \"current_page\": 1,\n    \"first_page_url\": \"http://localhost/api/products?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/api/products?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/api/products?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/api/products\",\n    \"per_page\": 5,\n    \"prev_page_url\": null,\n    \"to\": 4,\n    \"total\": 4\n}"
+						},
+						{
+							"name": "Get products by filter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/products?perPage=5&page=1&name=B",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "5"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "name",
+											"value": "B"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:50:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Produto B\",\n            \"description\": \"Descrição do Produto B\",\n            \"price\": \"200.99\"\n        }\n    ],\n    \"current_page\": 1,\n    \"first_page_url\": \"http://localhost/api/products?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/api/products?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/api/products?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/api/products\",\n    \"per_page\": 5,\n    \"prev_page_url\": null,\n    \"to\": 1,\n    \"total\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/products/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"products",
+								"6"
+							]
+						},
+						"description": "Forneça um ID na rota para deletar um produto."
+					},
+					"response": [
+						{
+							"name": "Product not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 00:02:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product not found.\"\n}"
+						},
+						{
+							"name": "Delete a product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/products/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"products",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 Apr 2024 01:00:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product deleted with success\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		},
+		{
+			"key": "productId",
+			"value": "1"
+		}
+	]
+}
