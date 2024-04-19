@@ -211,7 +211,7 @@ class ProductControllerTest extends TestCaseHelper
 
     public function test_it_should_not_show_product_because_id_not_exist()
     {
-        $response = $this->get("/api/products/{$this->fictitiousId}");
+        $response = $this->get("/api/products/$this->fictitiousId");
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
         $this->assertEquals($this->notFountMessage, $response->json('message'));
@@ -222,7 +222,7 @@ class ProductControllerTest extends TestCaseHelper
         $product = $this->faker->randomElement($this->products);
         $data = $this->getDataToUpdate($product);
 
-        $response = $this->put("/api/products/{$this->fictitiousId}", $data);
+        $response = $this->put("/api/products/$this->fictitiousId", $data);
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
         $this->assertEquals($this->notFountMessage, $response->json('message'));
@@ -230,7 +230,7 @@ class ProductControllerTest extends TestCaseHelper
 
     public function test_it_should_not_delete_product_because_id_not_exist()
     {
-        $response = $this->delete("/api/products/{$this->fictitiousId}");
+        $response = $this->delete("/api/products/$this->fictitiousId");
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
         $this->assertEquals($this->notFountMessage, $response->json('message'));
