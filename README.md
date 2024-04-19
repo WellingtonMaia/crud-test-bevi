@@ -51,7 +51,7 @@ Passo a passo para instalar e executar esse projeto.
 
 **6.** Executar esse comando para gerar uma chave na variável de ambiente `APP_KEY` no arquivo `.env`.
 
-        sail artisan key:generate
+    sail artisan key:generate
 
 **7.** Executar esse comando para criar as tabelas no banco de dados.
 
